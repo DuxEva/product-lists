@@ -10,9 +10,16 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
+import { CartCardComponent } from './components/cart/cart-card/cart-card.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductsComponent, ProductCardComponent, CartComponent],
+  declarations: [
+    AppComponent,
+    ProductsComponent,
+    ProductCardComponent,
+    CartComponent,
+    CartCardComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
