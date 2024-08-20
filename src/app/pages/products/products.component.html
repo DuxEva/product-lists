@@ -1,0 +1,9 @@
+<div class="h-10 mb-4">
+  <h1 class="text-rose-900 font-bold text-3xl">Dessert</h1>
+</div>
+<div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 lg:gap-7 md:gap-5 sm:gap-5 w-full">
+  <app-product-card
+    *ngFor="let product of products"
+    [product]="product"
+  ></app-product-card>
+</div>
