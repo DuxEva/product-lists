@@ -11,3 +11,8 @@ export interface Dessert {
 }
 
 export type ImageSize = 'thumbnail' | 'mobile' | 'tablet' | 'desktop';
+
+export interface CartProduct {
+  product: Dessert;
+  quantity: number;
+}

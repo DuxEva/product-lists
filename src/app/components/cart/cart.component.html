@@ -3,40 +3,11 @@
   <!-- <div class="h-64 w-full">
     <img class="w-full h-full" src="/assets/images/illustration-empty-cart.svg" alt="">
   </div> -->
-  <div class="mb-5">
-    <div class="w-full flex items-center justify-between">
-      <div class="flex flex-col gap-2">
-        <h1>Classic Tiramisu</h1>
-        <div class="flex gap-4">
-          <p class="text-red-1">1X</p>
-          <p class="text-rose-400">&#64; $5.50</p>
-          <p class="text-rose-400">$5.50</p>
-        </div>
-      </div>
-      <button
-        class="w-5 h-5 border-2 border-rose-300 rounded-full grid place-content-center"
-      >
-        <img class="w-3 h-3" src="/assets/images/icon-remove-item.svg" alt="" />
-      </button>
-    </div>
-    <div class="h-1 bg-rose-50 w-full mt-3"></div>
-  </div>
+  <app-cart-card></app-cart-card>
   <div class="flex justify-between px-1 text-lg">
-    <p>Order Total</p>
-    <p class="font-bold">$46.50</p>
-  </div>
-  <div
-    class="flex justify-center items-center gap-3 bg-rose-50 py-2 rounded-xl mt-5"
-  >
-    <img
-      class="h-10 w-10"
-      src="/assets/images/icon-carbon-neutral.svg"
-      alt="image"
-    />
-    <p class="text-lg">
-      This is a <span class="font-bold">carbon-neutral</span> delivery
-    </p>
-  </div>
+  <p>Order Total</p>
+  <p class="font-bold">{{totalPrice | currency}}</p>
+</div>
   <button class="w-full bg-red-1 text-white rounded-full py-3 mt-7">
     Confirm Order
   </button>
