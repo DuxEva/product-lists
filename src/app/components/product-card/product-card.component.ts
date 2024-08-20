@@ -1,7 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Dessert, ImageSize } from '../../model';
+import { Dessert, ImageSize, CartProduct } from '../../model';
 import { Subscription } from 'rxjs';
 import { ImageChangeService } from '../../service/image-change/image-change.service';
+import { CartService } from '../../service/cart/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -13,7 +14,10 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   imageSrcSubscription: Subscription | undefined;
   imageSrc: ImageSize = 'desktop';
 
-  constructor(private imageChangeService: ImageChangeService) {}
+  constructor(
+    private imageChangeService: ImageChangeService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
     this.imageSrcSubscription = this.imageChangeService.imageSrc$.subscribe(
@@ -21,6 +25,17 @@ export class ProductCardComponent implements OnInit, OnDestroy {
         this.imageSrc = src as ImageSize;
       }
     );
+  }
+
+  addToCart() {
+    if (this.product) {
+      console.log('hello', this.product);
+      const cartProduct: CartProduct = {
+        product: this.product,
+        quantity: 1,
+      };
+      this.cartService.addToCart(cartProduct);
+    }
   }
 
   ngOnDestroy() {

@@ -6,8 +6,9 @@ import { CartProduct } from '../../model';
   providedIn: 'root',
 })
 export class CartService {
-  private cartItems = new BehaviorSubject<CartProduct[]>([]);
+  cartItems = new BehaviorSubject<CartProduct[]>([]);
   cartItems$ = this.cartItems.asObservable();
+  cartQuantity = new BehaviorSubject<number>(0);
 
   constructor() {}
 
@@ -22,7 +23,6 @@ export class CartService {
     } else {
       items.push(product);
     }
-
     this.cartItems.next(items);
   }
 
@@ -43,5 +43,10 @@ export class CartService {
       (total, item) => total + item.product.price * item.quantity,
       0
     );
+  }
+
+  getTotalQuantity(): number {
+    const items = this.cartItems.getValue();
+    return items.reduce((total, item) => total + item.quantity, 0);
   }
 }

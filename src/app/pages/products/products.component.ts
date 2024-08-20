@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductService } from '../../service/product.service';
 import { Subscription } from 'rxjs';
 import { Dessert } from '../../model';
+import { CartService } from '../../service/cart/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +13,7 @@ export class ProductsComponent {
   products: Dessert[] = [];
   subcription!: Subscription
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private cartService:CartService) {}
 
   ngOnInit() {
     this.subcription = this.productService

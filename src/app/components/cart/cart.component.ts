@@ -10,6 +10,7 @@ import { CartService } from '../../service/cart/cart.service';
 export class CartComponent implements OnInit {
   cartItems: CartProduct[] = [];
   totalPrice: number = 0;
+  totalQuantity: number = 0;
 
   constructor(private cartService: CartService) {}
 
@@ -17,6 +18,7 @@ export class CartComponent implements OnInit {
     this.cartService.cartItems$.subscribe((items) => {
       this.cartItems = items;
       this.calculateTotalPrice();
+      this.calculateTotalQuantity();
     });
   }
 
@@ -34,5 +36,9 @@ export class CartComponent implements OnInit {
 
   calculateTotalPrice(): void {
     this.totalPrice = this.cartService.getTotalPrice();
+  }
+
+  calculateTotalQuantity(): void {
+    this.totalQuantity = this.cartService.getTotalQuantity();
   }
 }

@@ -1,14 +1,24 @@
 <div class="w-full rounded-lg bg-white p-4">
-  <h1 class="font-bold text-red-1 text-3xl">Your Cart (0)</h1>
-  <!-- <div class="h-64 w-full">
-    <img class="w-full h-full" src="/assets/images/illustration-empty-cart.svg" alt="">
-  </div> -->
-  <app-cart-card></app-cart-card>
-  <div class="flex justify-between px-1 text-lg">
-  <p>Order Total</p>
-  <p class="font-bold">{{totalPrice | currency}}</p>
-</div>
-  <button class="w-full bg-red-1 text-white rounded-full py-3 mt-7">
-    Confirm Order
-  </button>
+  <h1 class="font-bold text-red-1 text-3xl">Your Cart ({{ totalQuantity }})</h1>
+  <div class="h-64 w-full py-5" *ngIf="cartItems.length === 0">
+    <img
+      class="w-full h-[97%]"
+      src="/assets/images/illustration-empty-cart.svg"
+      alt=""
+    />
+    <h3 class="text-rose-500 text-center text-lg">Your added items will appear here</h3>
+  </div>
+  <div class="flex flex-col gap-4" *ngIf="cartItems.length > 0">
+    <app-cart-card
+      *ngFor="let product of cartItems"
+      [product]="product"
+    ></app-cart-card>
+    <div class="flex justify-between px-1 text-lg">
+      <p>Order Total</p>
+      <p class="font-bold">{{ totalPrice | currency }}</p>
+    </div>
+    <button class="w-full bg-red-1 text-white rounded-full py-3 mt-7">
+      Confirm Order
+    </button>
+  </div>
 </div>
