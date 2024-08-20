@@ -1,12 +1,13 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+import { ImageSize } from '../../model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ImageChangeService {
-  private imageSrcSubject = new BehaviorSubject<string>('');
+  private imageSrcSubject = new BehaviorSubject<ImageSize>('desktop');
   imageSrc$ = this.imageSrcSubject.asObservable();
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
@@ -22,7 +23,7 @@ export class ImageChangeService {
   }
 
   updateImageSrc(windowWidth: number) {
-    let imageSrc = '';
+    let imageSrc: ImageSize;
     if (windowWidth < 768) {
       imageSrc = 'mobile';
     } else if (windowWidth >= 768 && windowWidth < 1024) {
