@@ -9,3 +9,5 @@ export interface Dessert {
   category: string;
   price: number;
 }
+
+export type ImageSize = 'thumbnail' | 'mobile' | 'tablet' | 'desktop';

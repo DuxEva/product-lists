@@ -10,7 +10,7 @@ import { Dessert } from '../../model';
 })
 export class ProductsComponent {
   products: Dessert[] = [];
-  subcription: Subscription | undefined;
+  subcription!: Subscription
 
   constructor(private productService: ProductService) {}
 
@@ -19,7 +19,6 @@ export class ProductsComponent {
       .getProducts()
       .subscribe((data: Dessert[]) => {
         this.products = data;
-        console.log(this.products);
       });
   }
 

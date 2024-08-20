@@ -1,5 +1,6 @@
-import { HostListener, Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -8,11 +9,13 @@ export class ImageChangeService {
   private imageSrcSubject = new BehaviorSubject<string>('');
   imageSrc$ = this.imageSrcSubject.asObservable();
 
-  constructor() {
-    this.updateImageSrc(window.innerWidth);
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.updateImageSrc(window.innerWidth);
+      window.addEventListener('resize', this.onResize.bind(this));
+    }
   }
 
-  @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     const windowWidth = (event.target as Window).innerWidth;
     this.updateImageSrc(windowWidth);

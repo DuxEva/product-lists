@@ -1,10 +1,9 @@
-<div class="">
+<div *ngIf="product">
   <div class="h-72 w-full rounded-2xl">
     <img
-      [src]="product?.image?.desktop"
-      alt="product.name"
+      [src]="product.image[imageSrc]"
+      alt="{{ product.name }}"
       class="w-full h-full object-cover rounded-lg"
-      ngClass=""
     />
   </div>
   <div class="flex justify-center -mt-7">
@@ -12,12 +11,12 @@
       class="flex gap-2 items-center justify-center border border-rose-500 px-5 py-3 md:px-5 md:py-3 sm:px-4 sm:py-2 sm:gap-1 rounded-full bg-white z-10"
     >
       <img src="/assets/images/icon-add-to-cart.svg" alt="" />
-      <span class="text-lg font-bold">Add to Cart</span>
+      <span class="text-lg font-normal">Add to Cart</span>
     </button>
   </div>
   <div class="mt-3">
-    <p class="font-light text-rose-400 mb-1">{{ product?.category }}</p>
-    <h3 class="text-lg font-bold text-rose-900 mb-1">{{ product?.name }}</h3>
-    <p class="text-lg text-red-1">${{ product?.price | number : "1.2-2" }}</p>
+    <p class="font-light text-rose-400 mb-1">{{ product.category }}</p>
+    <h3 class="text-lg font-light text-rose-900 mb-1">{{ product.name }}</h3>
+    <p class="text-lg text-red-1">${{ product.price | number : '1.2-2' }}</p>
   </div>
 </div>
