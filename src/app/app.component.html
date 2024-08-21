@@ -1,14 +1,13 @@
-<div
-  class="bg-rose-50 py-5 relative"
-  [ngClass]="{ 'overflow-hidden': isOrderConfirmed }"
->
+<div class="bg-rose-50 py-3 relative">
   <div
-    class="flex lg:flex-row gap-10 px-5 py-3 sm:px-16 sm:py-6 md:flex-col sm:flex-col max-sm:flex-col"
+    class="flex lg:flex-row gap-10 px-3 py-5 sm:px-10 sm:py-6 md:flex-col sm:flex-col max-sm:flex-col"
   >
     <div class="lg:w-[69%] md:w-full sm:h-full">
       <app-products></app-products>
     </div>
-    <div class="lg:w-[30%] md:w-full sm:w-full w-full">
+    <div
+      class="lg:w-[30%] md:w-full sm:w-full w-full max-h-[60%] md:max-h-[80%] overflow-y-auto"
+    >
       <app-cart></app-cart>
     </div>
   </div>

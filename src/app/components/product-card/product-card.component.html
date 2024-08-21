@@ -1,6 +1,6 @@
 <div *ngIf="product">
   <div
-    class="h-72 w-full rounded-2xl"
+    class="h-48 w-full rounded-2xl"
     [ngClass]="{
       'border-2 border-red-1 transition-all duration-300 ease-in-out':
         isInCart(product) | async,
@@ -12,9 +12,9 @@
       class="w-full h-full object-cover rounded-2xl -z-10"
     />
   </div>
-  <div class="flex justify-center -mt-7">
+  <div class="flex justify-center -mt-5">
     <div
-      class="flex gap w-40 items-center justify-between px-3 py-3 md:px-5 md:py-3 sm:px-4 sm:py-2 sm:gap-1 rounded-full bg-red-1 z-10"
+      class="flex gap w-36 items-center justify-between px-2 py-1 md:px-3 md:py-2 sm:px-4 sm:py-1 sm:gap-1 rounded-full bg-red-1 z-10"
       *ngIf="isInCart(product) | async"
     >
       <button (click)="decrementQuantity()">
@@ -44,17 +44,17 @@
       </button>
     </div>
     <button
-      class="flex gap-2 items-center justify-center border border-rose-500 px-5 py-3 md:px-5 md:py-3 sm:px-4 sm:py-2 sm:gap-1 rounded-full bg-white z-10"
+      class="flex gap-2 items-center justify-center border border-rose-500 px-5 py-1 md:px-3 md:py-2 sm:px-4 sm:py-1 sm:gap-1 rounded-full bg-white z-10"
       (click)="addToCart()"
       *ngIf="!(isInCart(product) | async)"
     >
       <img src="/assets/images/icon-add-to-cart.svg" alt="Add to Cart" />
-      <span class="text-lg font-normal">Add to Cart</span>
+      <span class="font-normal">Add to Cart</span>
     </button>
   </div>
-  <div class="mt-1 sm:mt-3">
-    <p class="font-light text-rose-400 mb-1">{{ product.category }}</p>
-    <h3 class="text-lg font-semibold text-rose-900 mb-1">{{ product.name }}</h3>
+  <div class="mt-1 sm:mt-2">
+    <p class="font-light text-lg text-rose-400 mb-1">{{ product.category }}</p>
+    <h3 class="font-semibold text-rose-900 mb-1">{{ product.name }}</h3>
     <p class="text-lg text-red-1">${{ product.price | number : "1.2-2" }}</p>
   </div>
 </div>
