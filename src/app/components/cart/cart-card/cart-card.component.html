@@ -6,7 +6,7 @@
       </h1>
       <div class="flex gap-4">
         <p class="text-red-1 font-bold text-lg">{{ product.quantity }}x</p>
-        <p class="text-rose-400">{{ product.product.price | currency }}</p>
+        <p class="text-rose-400">&#64;{{ product.product.price | currency }}</p>
         <p class="text-rose-400">
           {{ product.product.price * product.quantity | currency }}
         </p>
