@@ -12,10 +12,5 @@
       <app-cart></app-cart>
     </div>
   </div>
-  <div
-    class="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 bg-black bg-opacity-50 overflow-hidden"
-    *ngIf="isOrderConfirmed"
-  >
-    <app-confirm-order></app-confirm-order>
-  </div>
+  <app-confirm-order *ngIf="isOrderConfirmed"></app-confirm-order>
 </div>

@@ -9,6 +9,7 @@ import { CartProduct } from '../../model';
 })
 export class ConfirmOrderComponent {
   isOrderConfirmed = false;
+  totalPrice = 0;
 
   cartItems: CartProduct[] = [];
 
@@ -18,13 +19,13 @@ export class ConfirmOrderComponent {
     this.cartService.isOrderPlaced$.subscribe((isOrderPlaced) => {
       if (isOrderPlaced) {
         this.isOrderConfirmed = true;
-        console.log('Order placed successfully');
       }
     });
 
     this.cartService.cartItems$.subscribe((items) => {
       this.cartItems = items;
     });
+    this.totalPrice = this.calculateTotalPrice();
   }
 
   startNewOrder(): void {
@@ -32,8 +33,14 @@ export class ConfirmOrderComponent {
     this.cartService.isOrderPlaced$.subscribe((isOrderPlaced) => {
       if (!isOrderPlaced) {
         this.isOrderConfirmed = false;
-        console.log('Order cancelled');
       }
     });
+  }
+
+  calculateTotalPrice(): number {
+    return this.cartItems.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    );
   }
 }

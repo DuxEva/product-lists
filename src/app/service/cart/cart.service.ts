@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CartProduct } from '../../model';
+import { CartProduct, Dessert } from '../../model';
 
 @Injectable({
   providedIn: 'root',
@@ -55,6 +55,32 @@ export class CartService {
 
   placeOrder() {
     this.isOrderPlaced.next(true);
-    console.log('placing order');
+  }
+
+  incrementQuantity(product: Dessert) {
+    const items = this.cartItems.getValue();
+    const existingProductIndex = items.findIndex(
+      (item) => item.product.name === product.name
+    );
+
+    if (existingProductIndex >= 0) {
+      items[existingProductIndex].quantity += 1;
+    }
+    this.cartItems.next(items);
+  }
+
+  decrementQuantity(product: Dessert) {
+    let items = this.cartItems.getValue();
+    const existingProductIndex = items.findIndex(
+      (item) => item.product.name === product.name
+    );
+
+    if (existingProductIndex >= 0) {
+      items[existingProductIndex].quantity -= 1;
+      if (items[existingProductIndex].quantity === 0) {
+        items = items.filter((item) => item.product.name !== product.name);
+      }
+    }
+    this.cartItems.next(items);
   }
 }

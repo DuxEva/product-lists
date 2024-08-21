@@ -42,4 +42,9 @@ export class CartComponent implements OnInit {
   placeOrder(): void {
     this.cartService.placeOrder();
   }
+
+  removeItem(product: CartProduct): void {
+    this.cartService.removeFromCart(product);
+  }
+
 }

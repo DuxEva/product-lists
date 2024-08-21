@@ -1,7 +1,9 @@
 <div
-  class="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 bg-black bg-opacity-50 overflow-hidden"
+  class="fixed inset-0 w-full min-h-screen flex items-end sm:items-center justify-center z-10 bg-black bg-opacity-50"
 >
-  <div class="w-[44%] h-fit border-2 bg-white z-20 p-7 rounded-xl">
+  <div
+    class="w-full h-fit lg:w-[44%] xl:w-[40%] sm:w-[60%] md:w-[65%] border-2 bg-white z-20 p-7 rounded-t-lg sm:rounded-xl"
+  >
     <div class="px-3">
       <div class="w-10 h-10 mb-7">
         <img
@@ -13,19 +15,25 @@
       <h1 class="text-rose-900 text-4xl font-bold mb-4">Order Confirmed</h1>
       <p class="text-rose-400 text-lg mb-4">We hope you enjoy your food!</p>
     </div>
-    <div class="flex items-center flex-col">
+    <div
+      class="flex items-center flex-col max-h-60 sm:max-h-72 overflow-y-auto"
+    >
       <div class="w-[95%] bg-rose-50 px-6 py-3 rounded-lg">
         <app-confirm-order-card
           *ngFor="let product of cartItems"
           [product]="product"
         ></app-confirm-order-card>
+        <div class="w-full flex justify-between text-lg mt-5">
+          <p>Order Total</p>
+          <p class="font-bold">{{ totalPrice | currency }}</p>
+        </div>
       </div>
-      <button
-        class="w-full bg-red-1 text-white rounded-full py-3 mt-5"
-        (click)="startNewOrder()"
-      >
-        Start New Order
-      </button>
     </div>
+    <button
+      class="w-full bg-red-1 text-white rounded-full py-3 mt-5"
+      (click)="startNewOrder()"
+    >
+      Start New Order
+    </button>
   </div>
 </div>

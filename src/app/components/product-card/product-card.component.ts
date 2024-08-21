@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Dessert, ImageSize, CartProduct } from '../../model';
-import { Subscription } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { ImageChangeService } from '../../service/image-change/image-change.service';
 import { CartService } from '../../service/cart/cart.service';
 
@@ -35,6 +35,35 @@ export class ProductCardComponent implements OnInit, OnDestroy {
       };
       this.cartService.addToCart(cartProduct);
     }
+  }
+
+  incrementQuantity() {
+    if (this.product) {
+      this.cartService.incrementQuantity(this.product);
+    }
+  }
+
+  decrementQuantity() {
+    if (this.product) {
+      this.cartService.decrementQuantity(this.product);
+    }
+  }
+
+  getProductQuantity(): Observable<number> {
+    return this.cartService.cartItems$.pipe(
+      map((items: CartProduct[]) => {
+        const item = items.find((i) => i.product.name === this.product?.name);
+        return item ? item.quantity : 0;
+      })
+    );
+  }
+
+  isInCart(product: Dessert): Observable<boolean> {
+    return this.cartService.cartItems$.pipe(
+      map((items: CartProduct[]) =>
+        items.some((item: CartProduct) => item.product.name === product.name)
+      )
+    );
   }
 
   ngOnDestroy() {
