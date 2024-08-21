@@ -29,7 +29,6 @@ export class ProductCardComponent implements OnInit, OnDestroy {
 
   addToCart() {
     if (this.product) {
-      console.log('hello', this.product);
       const cartProduct: CartProduct = {
         product: this.product,
         quantity: 1,

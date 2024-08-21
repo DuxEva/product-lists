@@ -9,6 +9,8 @@ export class CartService {
   cartItems = new BehaviorSubject<CartProduct[]>([]);
   cartItems$ = this.cartItems.asObservable();
   cartQuantity = new BehaviorSubject<number>(0);
+  isOrderPlaced = new BehaviorSubject<boolean>(false);
+  isOrderPlaced$ = this.isOrderPlaced.asObservable();
 
   constructor() {}
 
@@ -35,6 +37,7 @@ export class CartService {
 
   clearCart() {
     this.cartItems.next([]);
+    this.isOrderPlaced.next(false);
   }
 
   getTotalPrice(): number {
@@ -48,5 +51,10 @@ export class CartService {
   getTotalQuantity(): number {
     const items = this.cartItems.getValue();
     return items.reduce((total, item) => total + item.quantity, 0);
+  }
+
+  placeOrder() {
+    this.isOrderPlaced.next(true);
+    console.log('placing order');
   }
 }

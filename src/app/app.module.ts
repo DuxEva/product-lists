@@ -11,6 +11,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
 import { CartCardComponent } from './components/cart/cart-card/cart-card.component';
+import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
+import { ConfirmOrderCardComponent } from './components/confirm-order/confirm-order-card/confirm-order-card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { CartCardComponent } from './components/cart/cart-card/cart-card.compone
     ProductCardComponent,
     CartComponent,
     CartCardComponent,
+    ConfirmOrderComponent,
+    ConfirmOrderCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [provideClientHydration()],

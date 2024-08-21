@@ -11,6 +11,7 @@ export class CartComponent implements OnInit {
   cartItems: CartProduct[] = [];
   totalPrice: number = 0;
   totalQuantity: number = 0;
+  isOrderPlaced = false;
 
   constructor(private cartService: CartService) {}
 
@@ -26,7 +27,6 @@ export class CartComponent implements OnInit {
     this.cartService.addToCart(product);
   }
 
-
   clearCart(): void {
     this.cartService.clearCart();
   }
@@ -37,5 +37,9 @@ export class CartComponent implements OnInit {
 
   calculateTotalQuantity(): void {
     this.totalQuantity = this.cartService.getTotalQuantity();
+  }
+
+  placeOrder(): void {
+    this.cartService.placeOrder();
   }
 }

@@ -3,16 +3,12 @@ import { CartProduct } from '../../../model';
 import { CartService } from '../../../service/cart/cart.service';
 
 @Component({
-  selector: 'app-cart-card',
-  templateUrl: './cart-card.component.html',
-  styleUrl: './cart-card.component.css',
+  selector: 'app-confirm-order-card',
+  templateUrl: './confirm-order-card.component.html',
+  styleUrl: './confirm-order-card.component.css',
 })
-export class CartCardComponent {
+export class ConfirmOrderCardComponent {
   @Input() product!: CartProduct;
 
   constructor(private cartService: CartService) {}
-
-  removeFromCart(product: CartProduct): void {
-    this.cartService.removeFromCart(product);
-  }
 }

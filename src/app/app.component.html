@@ -1,4 +1,7 @@
-<div class="bg-rose-50 py-5">
+<div
+  class="bg-rose-50 py-5 relative"
+  [ngClass]="{ 'overflow-hidden': isOrderConfirmed }"
+>
   <div
     class="flex lg:flex-row gap-10 px-5 py-3 sm:px-16 sm:py-6 md:flex-col sm:flex-col max-sm:flex-col"
   >
@@ -8,5 +11,11 @@
     <div class="lg:w-[30%] md:w-full sm:w-full w-full">
       <app-cart></app-cart>
     </div>
+  </div>
+  <div
+    class="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-10 bg-black bg-opacity-50 overflow-hidden"
+    *ngIf="isOrderConfirmed"
+  >
+    <app-confirm-order></app-confirm-order>
   </div>
 </div>
