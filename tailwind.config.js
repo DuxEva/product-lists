@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
+      fontFamily: {
+        redhat: ["redhat", "sans-serif"],
+      },
       keyframes: {
         "scale-up": {
           "0%": { transform: "scale(0)" },
