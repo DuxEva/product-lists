@@ -1,13 +1,25 @@
+// export interface Dessert {
+//   image: {
+//     thumbnail: string;
+//     mobile: string;
+//     tablet: string;
+//     desktop: string;
+//   };
+//   name: string;
+//   category: string;
+//   price: number;
+// }
 export interface Dessert {
-  image: {
-    thumbnail: string;
-    mobile: string;
-    tablet: string;
-    desktop: string;
-  };
-  name: string;
-  category: string;
+  id: number;
+  title: string;
   price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
 }
 
 export type ImageSize = 'thumbnail' | 'mobile' | 'tablet' | 'desktop';
