@@ -17,7 +17,7 @@ export class CartService {
   addToCart(product: CartProduct) {
     const items = this.cartItems.getValue();
     const existingProductIndex = items.findIndex(
-      (item) => item.product.name === product.product.name
+      (item) => item.product.id === product.product.id
     );
 
     if (existingProductIndex >= 0) {
@@ -30,7 +30,7 @@ export class CartService {
 
   removeFromCart(product: CartProduct) {
     let items = this.cartItems.getValue();
-    items = items.filter((item) => item.product.name !== product.product.name);
+    items = items.filter((item) => item.product.id !== product.product.id);
 
     this.cartItems.next(items);
   }
@@ -60,7 +60,7 @@ export class CartService {
   incrementQuantity(product: Dessert) {
     const items = this.cartItems.getValue();
     const existingProductIndex = items.findIndex(
-      (item) => item.product.name === product.name
+      (item) => item.product.id === product.id
     );
 
     if (existingProductIndex >= 0) {
@@ -72,13 +72,13 @@ export class CartService {
   decrementQuantity(product: Dessert) {
     let items = this.cartItems.getValue();
     const existingProductIndex = items.findIndex(
-      (item) => item.product.name === product.name
+      (item) => item.product.id === product.id
     );
 
     if (existingProductIndex >= 0) {
       items[existingProductIndex].quantity -= 1;
       if (items[existingProductIndex].quantity === 0) {
-        items = items.filter((item) => item.product.name !== product.name);
+        items = items.filter((item) => item.product.id !== product.id);
       }
     }
     this.cartItems.next(items);
