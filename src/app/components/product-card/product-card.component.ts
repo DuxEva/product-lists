@@ -52,7 +52,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   getProductQuantity(): Observable<number> {
     return this.cartService.cartItems$.pipe(
       map((items: CartProduct[]) => {
-        const item = items.find((i) => i.product.id === this.product?.id);
+        const item = items.find((i) => i.product.name === this.product?.name);
         return item ? item.quantity : 0;
       })
     );
@@ -61,7 +61,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   isInCart(product: Dessert): Observable<boolean> {
     return this.cartService.cartItems$.pipe(
       map((items: CartProduct[]) =>
-        items.some((item: CartProduct) => item.product.id === product.id)
+        items.some((item: CartProduct) => item.product.name === product.name)
       )
     );
   }

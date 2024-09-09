@@ -6,7 +6,7 @@ import { Dessert } from '../model';
   providedIn: 'root',
 })
 export class ProductService {
-  url = 'https://fakestoreapi.com/products';
+  url = 'assets/data.json';
 
   constructor(private http: HttpClient) {}
 
